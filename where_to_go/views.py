@@ -1,27 +1,44 @@
-from django.shortcuts import render
-from places.models import Place, Image
+from django.http import JsonResponse
+
+from django.shortcuts import render, get_object_or_404
+from places.models import Place, Location
 
 
 def home(request):
-    places = Place.objects.all()
+    locations = Location.objects.all()
     features = []
-    for place in places:
-        feature = {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [place.lng, place.lat]
-            },
-            "properties": {
-                "title": place.title,
-                "placeId": place.id,
-                "detailsUrl": place.details.url
+    if locations:
+        for location in locations:
+            feature = {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [location.lng, location.lat]
+                },
+                "properties": {
+                    "title": location.title,
+                    "placeId": location.id,
+                    "detailsUrl": ""
+                }
             }
-        }
-        features.append(feature)
-
+            features.append(feature)
     geo_data = {
       "type": "FeatureCollection",
       "features": features
     }
     return render(request, "index.html", context={"data": geo_data})
+
+
+def place_view(request, id):
+    place = get_object_or_404(Place, id=id)
+    context = {
+        "title": place.title,
+        "imgs": [img.image.url for img in place.imgs.all()],
+        "description_short": place.description_short,
+        "description_long": place.description_long,
+        "coordinates": {
+            "lng": place.lng,
+            "lat": place.lat
+        }
+    }
+    return JsonResponse(context, json_dumps_params={'indent': 2, 'ensure_ascii': False})
