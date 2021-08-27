@@ -15,7 +15,7 @@ class Place(models.Model):
 
 class Image(models.Model):
     image = models.ImageField(upload_to="img")
-    order = models.IntegerField()
+    serial_number = models.IntegerField()
     place = models.ForeignKey(Place, on_delete=models.CASCADE)
 
     def __str__(self):
