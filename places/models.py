@@ -7,6 +7,8 @@ class Place(models.Model):
     description_long = models.TextField()
     lng = models.FloatField()
     lat = models.FloatField()
+    details = models.FileField(upload_to="places", null=True, blank=True)
+
     created_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
