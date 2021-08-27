@@ -26,8 +26,11 @@ class Location(models.Model):
 
 class Image(models.Model):
     image = models.ImageField(upload_to="img")
-    serial_number = models.IntegerField()
+    serial_number = models.IntegerField(default=0)
     place = models.ForeignKey(Place, on_delete=models.CASCADE, related_name="imgs")
 
     def __str__(self):
         return f"{self.serial_number} {self.place.title}"
+
+    class Meta:
+        ordering = ['serial_number']
