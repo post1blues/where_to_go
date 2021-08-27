@@ -22,6 +22,6 @@ from where_to_go import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home),
-    path('places/<int:id>', views.place_view)
+    path('', views.home, name="home"),
+    path('places/<int:id>', views.place_view, name="place")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

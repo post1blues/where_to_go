@@ -17,6 +17,7 @@ class Location(models.Model):
     title = models.CharField(max_length=100)
     lng = models.FloatField()
     lat = models.FloatField()
+    place = models.ForeignKey(Place, on_delete=models.CASCADE)
     created_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

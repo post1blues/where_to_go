@@ -1,5 +1,5 @@
 from django.http import JsonResponse
-
+from django.urls import reverse
 from django.shortcuts import render, get_object_or_404
 from places.models import Place, Location
 
@@ -18,7 +18,7 @@ def home(request):
                 "properties": {
                     "title": location.title,
                     "placeId": location.id,
-                    "detailsUrl": ""
+                    "detailsUrl": reverse("place", kwargs={"id": location.place.id})
                 }
             }
             features.append(feature)
