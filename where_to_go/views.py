@@ -18,7 +18,7 @@ def home(request):
                 "properties": {
                     "title": location.title,
                     "placeId": location.id,
-                    "detailsUrl": reverse("place", kwargs={"id": location.place.id})
+                    "detailsUrl": reverse("place", kwargs={"pk": location.place.id})
                 }
             }
             features.append(feature)
@@ -29,8 +29,8 @@ def home(request):
     return render(request, "index.html", context={"data": geo_data})
 
 
-def place_view(request, id):
-    place = get_object_or_404(Place, id=id)
+def place_view(request, pk):
+    place = get_object_or_404(Place, id=pk)
     context = {
         "title": place.title,
         "imgs": [img.image.url for img in place.imgs.all()],
