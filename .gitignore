@@ -2,3 +2,4 @@
 *.sqlite3
 .idea
 media
+__pycache__
