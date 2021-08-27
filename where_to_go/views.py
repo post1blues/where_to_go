@@ -20,9 +20,8 @@ def home(request):
         }
         features.append(feature)
 
-    data = {
+    geo_data = {
       "type": "FeatureCollection",
       "features": features
     }
-    print(data)
-    return render(request, "index.html", context={"data": data})
+    return render(request, "index.html", context={"data": geo_data})
