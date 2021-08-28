@@ -17,7 +17,6 @@ from environs import Env
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 env = Env()
 env.read_env(os.path.join(BASE_DIR, ".env"), recurse=False)
 
@@ -31,7 +30,6 @@ SECRET_KEY = env("SECRET_KEY")
 DEBUG = env.bool("DEBUG", False)
 
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
-
 
 
 # Application definition
@@ -131,12 +129,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, env("MEDIA_ROOT"))
 MEDIA_URL = env("MEDIA_URL")
 
 STATIC_URL = env("STATIC_URL")
-
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, static_dir) for static_dir in env.list("STATICFILES_DIRS")
-# ]
-#
-# STATIC_ROOT = os.path.join(BASE_DIR, env.path("STATIC_ROOT", "static"))
 
 
 STATICFILES_DIRS = [
