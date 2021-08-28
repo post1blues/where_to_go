@@ -33,6 +33,7 @@ DEBUG = env.bool("DEBUG", False)
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
 
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -131,14 +132,20 @@ MEDIA_URL = env("MEDIA_URL")
 
 STATIC_URL = env("STATIC_URL")
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, static_dir) for static_dir in env.list("STATICFILES_DIRS")
-]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, static_dir) for static_dir in env.list("STATICFILES_DIRS")
+# ]
+#
+# STATIC_ROOT = os.path.join(BASE_DIR, env.path("STATIC_ROOT", "static"))
 
-STATIC_ROOT = env.path("STATIC_ROOT", "static_files")
+if DEBUG:
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, static_dir) for static_dir in env.list("STATICFILES_DIRS")
+    ]
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, env.path("STATIC_ROOT", "static"))
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
