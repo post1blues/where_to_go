@@ -1,5 +1,4 @@
 from json import JSONDecodeError
-
 from django.core.management.base import BaseCommand
 from django.core.files import File
 import requests
