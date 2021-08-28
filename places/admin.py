@@ -2,11 +2,10 @@ from django.contrib import admin
 from django.utils.html import format_html
 from adminsortable2.admin import SortableInlineAdminMixin
 
-from places.models import Place, Image, Location
+from places.models import Place, Image
 
 
 admin.site.register(Image)
-admin.site.register(Location)
 
 
 class ImageInline(SortableInlineAdminMixin, admin.TabularInline):

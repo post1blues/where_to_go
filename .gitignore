@@ -2,5 +2,5 @@
 *.sqlite3
 .idea
 __pycache__
-static_files
-static - copy
+assets
+media

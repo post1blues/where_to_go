@@ -19,22 +19,6 @@ class Place(models.Model):
         verbose_name_plural = "Места"
 
 
-class Location(models.Model):
-    title = models.CharField(max_length=100, verbose_name="Название")
-    lng = models.FloatField(verbose_name="Долгота")
-    lat = models.FloatField(verbose_name="Широта")
-    place = models.ForeignKey(Place, on_delete=models.CASCADE, verbose_name="Места")
-    created_date = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f"{self.title} - {self.lng}, {self.lat}"
-
-    class Meta:
-        ordering = ["-created_date"]
-        verbose_name = "Локация"
-        verbose_name_plural = "Локации"
-
-
 class Image(models.Model):
     image = models.ImageField(upload_to="img", verbose_name="Изображение")
     serial_number = models.IntegerField(default=0, verbose_name="Позиция")

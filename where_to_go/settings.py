@@ -138,12 +138,12 @@ STATIC_URL = env("STATIC_URL")
 #
 # STATIC_ROOT = os.path.join(BASE_DIR, env.path("STATIC_ROOT", "static"))
 
-if DEBUG:
-    STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, static_dir) for static_dir in env.list("STATICFILES_DIRS")
-    ]
-else:
-    STATIC_ROOT = os.path.join(BASE_DIR, env.path("STATIC_ROOT", "static"))
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, static_dir) for static_dir in env.list("STATICFILES_DIRS")
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR, env.path("STATIC_ROOT", "static"))
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

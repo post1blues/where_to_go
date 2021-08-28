@@ -1,24 +1,24 @@
 from django.http import JsonResponse
 from django.urls import reverse
 from django.shortcuts import render, get_object_or_404
-from places.models import Place, Location
+from places.models import Place
 
 
 def home(request):
-    locations = Location.objects.all()
+    places = Place.objects.all()
     features = []
-    if locations:
-        for location in locations:
+    if places:
+        for place in places:
             feature = {
                 "type": "Feature",
                 "geometry": {
                     "type": "Point",
-                    "coordinates": [location.lng, location.lat]
+                    "coordinates": [place.lng, place.lat]
                 },
                 "properties": {
-                    "title": location.title,
-                    "placeId": location.id,
-                    "detailsUrl": reverse("place", kwargs={"pk": location.place.id})
+                    "title": place.title,
+                    "placeId": place.id,
+                    "detailsUrl": reverse("place", kwargs={"pk": place.id})
                 }
             }
             features.append(feature)
