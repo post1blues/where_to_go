@@ -135,6 +135,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, static_dir) for static_dir in env.list("STATICFILES_DIRS")
 ]
 
+STATIC_ROOT = env.path("STATIC_ROOT", "static_files")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

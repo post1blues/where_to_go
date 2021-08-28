@@ -14,7 +14,7 @@ class Place(models.Model):
         return self.title
 
     class Meta:
-        ordering = ["-created_at"]
+        ordering = ["-created_date"]
         verbose_name = "Место"
         verbose_name_plural = "Места"
 
@@ -30,7 +30,7 @@ class Location(models.Model):
         return f"{self.title} - {self.lng}, {self.lat}"
 
     class Meta:
-        ordering = ["-created_at"]
+        ordering = ["-created_date"]
         verbose_name = "Локация"
         verbose_name_plural = "Локации"
 
