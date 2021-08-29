@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
+import mimetypes
 from pathlib import Path
 from environs import Env
 
@@ -135,7 +136,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, static_dir) for static_dir in env.list("STATICFILES_DIRS")
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, env.path("STATIC_ROOT", "static"))
+STATIC_ROOT = os.path.join(BASE_DIR, env.path("STATIC_ROOT", "assets"))
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
