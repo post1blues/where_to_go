@@ -13,7 +13,7 @@
 * Пользователь `test_user`
 * Пароль `7CYpd$cu`
 
-![App screenshot](https://image.prntscr.com/image/P3tcn1g-SYKHYDWht6qr3A.png)
+![App screenshot](https://i.ibb.co/xmZYWBb/P3tcn1g-SYKHYDWht6qr3-A.png)
 
 ## Установка
 1. Скачать репозиторий `git clone https://github.com/post1blues/where_to_go.git`
