@@ -17,10 +17,11 @@
 
 ## Установка
 1. Скачать репозиторий `git clone https://github.com/post1blues/where_to_go.git`
-2. Установить нужные библиотеки `pip install -r requirements.txt`
-3. Установить свой `SECRET_KEY` в файле `.env`
-4. Выполнить миграции `python manage.py migrate`
-5. Создать суперпользователя `python manage.py createsuperuser`
+2. Перейти в папку с проектом (внутри папки должен лежать файл `manage.py`)
+3. Установить нужные библиотеки `pip install -r requirements.txt`
+4. Установить свой `SECRET_KEY` в файле `.env`
+5. Выполнить миграции `python manage.py migrate`
+6. Создать суперпользователя `python manage.py createsuperuser`
 
 ## Запуск в development режиме
 Выполнять нужно после предыдущего пункта
