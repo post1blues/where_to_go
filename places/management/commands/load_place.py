@@ -54,8 +54,8 @@ class Command(BaseCommand):
     def _create_place(self, place_data):
         created_place, created = Place.objects.get_or_create(
             title=place_data["title"],
-            description_short=place_data["description_short"],
-            description_long=place_data["description_long"],
+            short_description=place_data["description_short"],
+            long_description=place_data["description_long"],
             lng=place_data["coordinates"]["lng"],
             lat=place_data["coordinates"]["lat"]
         )
@@ -70,7 +70,7 @@ class Command(BaseCommand):
         image_blob = BytesIO(image["img_binary"])
 
         image_obj = Image(
-            serial_number=image["serial_number"],
+            position=image["serial_number"],
             place=image["place"]
         )
         image_obj.image.save(image["img_name"], File(image_blob), save=True)
