@@ -4,17 +4,17 @@ from tinymce import models as tinymce_models
 
 class Place(models.Model):
     title = models.CharField(max_length=100, verbose_name="Название")
-    description_short = models.TextField(max_length=500, verbose_name="Краткое описание")
-    description_long = tinymce_models.HTMLField(null=True, blank=True, verbose_name="Полное описание")
+    short_description = models.TextField(max_length=500, verbose_name="Краткое описание")
+    long_description = tinymce_models.HTMLField(null=True, blank=True, verbose_name="Полное описание")
     lng = models.FloatField(verbose_name="Долгота")
     lat = models.FloatField(verbose_name="Широта")
-    created_date = models.DateTimeField(auto_now_add=True)
+    date_created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.title
 
     class Meta:
-        ordering = ["-created_date"]
+        ordering = ["-date_created"]
         verbose_name = "Место"
         verbose_name_plural = "Места"
 
