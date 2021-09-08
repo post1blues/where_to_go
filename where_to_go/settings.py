@@ -25,12 +25,12 @@ env.read_env(os.path.join(BASE_DIR, ".env"), recurse=False)
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env("SECRET_KEY")
+SECRET_KEY = env.str("SECRET_KEY", "X6rCLbywB9mAHKuJ")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool("DEBUG", False)
+DEBUG = env.bool("DEBUG", True)
 
-ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
+ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", ["127.0.0.1"])
 
 
 # Application definition
@@ -125,18 +125,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-MEDIA_ROOT = os.path.join(BASE_DIR, env("MEDIA_ROOT"))
+MEDIA_ROOT = os.path.join(BASE_DIR, env.str("MEDIA_ROOT", "media"))
 
-MEDIA_URL = env("MEDIA_URL")
+MEDIA_URL = env.str("MEDIA_URL", "media/")
 
-STATIC_URL = env("STATIC_URL")
+STATIC_URL = env.str("STATIC_URL", "/static/")
 
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, static_dir) for static_dir in env.list("STATICFILES_DIRS")
+    os.path.join(BASE_DIR, "static")
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, env.path("STATIC_ROOT", "assets"))
+STATIC_ROOT = os.path.join(BASE_DIR, env.str("STATIC_ROOT", "assets"))
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
